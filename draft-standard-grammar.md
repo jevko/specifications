@@ -37,8 +37,6 @@ A valid Jevko sequence is a sequence of Unicode code points which conforms to th
 
 The Standard Grammar described here is broken down and structured for optimal human-readability and to map directly to parse trees which are particularly useful for further processing.
 
-An alternative Concise Grammar which matches the same sequences is given in the Appendix.
-
 There are two main grammatical rules: the `Jevko` rule and the `Subjevko` rule.
 
 The `Jevko` rule is the *start symbol* of the grammar.
@@ -198,14 +196,6 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 ```
 
 <div style="page-break-after: always;"></div>
-
-### The Concise Grammar
-
-The following Concise Grammar matches the same sequences as the Standard Grammar:
-
-```abnf
-Jevko = *("[" Jevko "]" / "`" ("`" / "[" / "]") / %x0-5a / %x5c / %x5e-5f / %x61-10ffff)
-```
 
 ### Examples
 
