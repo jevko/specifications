@@ -166,6 +166,10 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 <a id="ref-rfc-5234"></a>
 [RFC 5234] Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", STD 68, RFC 5234, DOI 10.17487/RFC5234, January 2008, <https://www.rfc-editor.org/info/rfc5234>.
 
+## See also
+
+[Jevko examples](https://github.com/jevko/examples)
+
 ## Appendix
 
 ### The Standard Grammar ABNF in one page
@@ -196,82 +200,6 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 ```
 
 <div style="page-break-after: always;"></div>
-
-### Examples
-
-A possible Jevko encoding of an abstract tree structure:
-
-```
-Prefix 1 [Suffix 1] 
-Prefix 2 [
-  Prefix 2.1 [Suffix 2.1] 
-  Prefix 2.2 [Suffix 2.2] 
-  Suffix 2
-]
-Prefix 3 [Suffix 3]
-Suffix
-```
-
-Example part which matches the Subjevko rule:
-
-```
-Prefix 1 [Suffix 1] 
-```
-
-Example part which matches the Prefix (Text) rule:
-
-```
-
-  Prefix 2.1 
-```
-
-Note: all whitespace characters are matched by the rule.
-
-Example part which matches the Suffix (Text) rule:
-
-```
-Suffix 3
-```
-
-A possible Jevko encoding of a part of the structured content of this document:
-
-```
-document [
-  title [The Jevko Syntax: Standard Grammar]
-  section [
-    title [Copyright Notice]
-    paragraph [Copyright © 2022 Darius J Chuck. All rights reserved.]
-  ]
-  section [
-    title [Introduction and scope]
-    paragraph [Jevko is a versatile minimal syntax for encoding tree-structured information.]
-    paragraph [It can be used to define simple and portable formats and languages in a variety of domains, such as data interchange, configuration, or text markup.]
-  ]
-]
-```
-
-A possible Jevko encoding of [structured data from Wikipedia](https://en.wikipedia.org/wiki/Horse):
-
-```
-Name [Horse]
-
-Conservation status [Domesticated]
-Scientific classification [
-  Kingdom [Animalia]
-  Phylum [Chordata]
-  Class [Mammalia]
-  Order [Perissodactyla]
-  Family [Equidae]
-  Genus [Equus]
-  Species [E. ferus]
-  Subspecies [E. f. caballus]
-]
-Trinomial name [
-  [Equus ferus caballus]
-  [Linnaeus, 1758]
-] 
-Synonyms [at least 48 published]
-```
 
 ### Etymology and pronunciation
 
