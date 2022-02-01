@@ -1,7 +1,7 @@
 # Draft
 # The Jevko Syntax: Standard Grammar Specification
 
-First Draft, January 2022.
+Second Draft, February 2022.
 
 by Darius J Chuck
 
@@ -21,7 +21,7 @@ Jevko is a versatile minimal syntax for encoding tree-structured information.
 
 It can be used to define simple and portable formats and languages in a variety of domains, such as data interchange, configuration, or text markup.
 
-Jevko is completely programming-language independent and is intended to have no inherent semantics. It is a pure syntactic building block meant to lend itself to joining together with other syntactic or semantic building blocks in a modular way.
+Jevko is completely programming-language independent and has no inherent semantics. It is a pure syntactic building block which can be joined together with other syntactic or semantic building blocks in a modular way.
 
 These additional building blocks are specified separately. The purpose of this specification is only to describe the basic syntax in terms of Unicode [[Unicode]](#ref-unicode) code points, providing a reference for implementations as well as other specifications.
 
@@ -29,29 +29,39 @@ The formal grammar definitions in this document use the ABNF notation [[RFC 5234
 
 <div style="page-break-after: always;"></div>
 
-## Valid Jevko Sequence
+## Valid Jevko sequence
 
 A valid Jevko sequence is a sequence of Unicode code points which conforms to the Jevko rule defined in this document.
 
-## The Standard Grammar and basic rules
+## The rules 
 
-The Standard Grammar described here is broken down and structured for optimal human-readability and to map directly to parse trees which are particularly useful for further processing.
+The syntax of Jevko is extremely minimal.
 
 There are two main grammatical rules: the `Jevko` rule and the `Subjevko` rule.
 
-The `Jevko` rule is the *start symbol* of the grammar.
+The `Jevko` rule is the *start symbol* of the grammar. 
 
-It is mutually recursive with the `Subjevko` rule, making the grammar recursive as well.
+It refers to the `Subjevko` rule which in turn refers back to `Jevko`: the two rules are mutually-recursive.
 
-All other rules are non-recursive.
+This makes Jevko a *recursive grammar*. 
 
-The rules are described in the following sections. The first section defines rules for delimiters characteristic to Jevko. The remaining sections describe the rest of the rules, top to bottom, starting with Jevko.
+This recursion is minimal: if a reference to either `Jevko` or `Subjevko` was removed, the grammar would cease to be recursive.
+
+All remaining rules are non-recursive. Notably:
+
+* The [`Character`](#character) rule covers all possible code points except three.
+
+* The three remaining code points ([`Delimiters`](#delimiters)) are the only special characters in the grammar.
+
+* There are no special rules for whitespace. All whitespace characters are captured by the `Character` rule.
+
+All rules are described and formally defined in the following sections. The first section covers rules for delimiters. The remaining sections describe the rest of the rules, top to bottom, starting with `Jevko`.
 
 <div style="page-break-after: always;"></div>
 
 ### Delimiters
 
-The Jevko Grammar is based around three delimiters, named by the Delimiter rule:
+Jevko is based around three delimiters, named by the Delimiter rule:
 
 ```abnf
 Delimiter = Opener / Closer / Escaper
