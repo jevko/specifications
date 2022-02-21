@@ -1,19 +1,10 @@
-NOTE: this draft is superseded by [this specification](spec-standard-grammar.md).
-
-# Draft
 # The Jevko Syntax: Standard Grammar Specification
 
-Second Draft, February 2022.
+First Edition, February 2022.
 
 by Darius J Chuck
 
 © 2022 [Jevko.org](https://jevko.org)
-
-<div style="page-break-after: always;"></div>
-
-## Copyright Notice
-
-Copyright © 2022 Darius J Chuck. All rights reserved.
 
 <div style="page-break-after: always;"></div>
 
