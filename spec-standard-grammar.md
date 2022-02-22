@@ -4,8 +4,6 @@ First Edition, February 2022.
 
 by Darius J Chuck
 
-© 2022 [Jevko.org](https://jevko.org)
-
 <div style="page-break-after: always;"></div>
 
 ## Introduction and scope
