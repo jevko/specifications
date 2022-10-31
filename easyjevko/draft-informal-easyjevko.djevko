@@ -1,4 +1,4 @@
-h [Easy Jevko]
+h [Easy Jevko: informal specification draft]
 
 p [
   [Easy Jevko is a very simple and lightweight data interchange format built on ]
@@ -191,7 +191,10 @@ ej [
   ]
 ]
 
-p [Names in a map are much like strings, except that they are always followed by a value wrapped in ():]
+hhh [Name]
+--  [----]
+
+p [A name in a map is much like a string, except that it is always followed by a value wrapped in ():]
 
 ej [
   map [
@@ -214,6 +217,8 @@ ej [
     [)]
   ]
 ]
+
+p [Both of the above maps are therefore equivalent to the following JSON object:]
 
 json [
   map [
@@ -261,3 +266,25 @@ nonblank]
 hh [Limitations]
 
 p [todo]
+
+pre [
+  Covers a subset of JSON.
+  values
+    objects
+      no empty keys
+      no padded keys
+      no empty object
+
+      unordered, unique entries
+
+    arrays
+      no empty array
+
+    strings
+      no escape sequences
+      
+
+    no numbers, true, false, null
+
+  no syntactically-driven typing
+]
