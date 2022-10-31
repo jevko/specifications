@@ -66,7 +66,7 @@ json [
 ej [
   str [
     ph [...] endl []
-    [    my padded multilnie string    ]
+    [    my padded multiline string    ]
     endl [] ph [...]
   ] 
 ]
@@ -75,7 +75,7 @@ json [
   str [
     ["]
     ph [...] 
-    [\n    my padded multilnie string    \n] 
+    [\n    my padded multiline string    \n] 
     ph [...]
     ["]
   ]
