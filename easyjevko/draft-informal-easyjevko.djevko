@@ -7,17 +7,37 @@ p [
     [Jevko]
   ]
   [.]
+]
 
-  
+p [
+  [It provides a minimal alternative to ] 
+  a [
+    href=[https://json.org]
+    [JSON]
+  ]
+  [.]
 ]
 
 p [3 kinds of values: strings, arrays, maps.]
+
+p [Easy Jevko code is marked like this:]
 
 ej [
   ph [value ...]
 ]
 
+p [Usually followed by the corresponding JSON code, marked like so:]
+
+json [
+  ph [value ...]
+]
+
+p [
+  ph [value ...] [ marks a placeholder]
+]
+
 hh [Strings]
+-- [-------]
 
 p [
   Free-floating text which is not followed by ( is a string.
@@ -62,7 +82,15 @@ json [
 ]
 
 hh [Arrays]
+-- [------]
 
+p [An array is several values wrapped in () and concatenated together.]
+
+p [
+  [Like in JSON, an array means an ]
+  b [ordered] 
+  [ list of values.]
+]
 
 ej [
   array [
@@ -72,6 +100,8 @@ ej [
   ]
 ]
 
+p [The values may be separated or surrounded by whitespace, e.g.:]
+
 ej [
   array [
     [(] ph [value 1] [)] endl[]
@@ -80,26 +110,47 @@ ej [
   ]
 ]
 
+p [or:]
+
 ej [
   array [
     [(] ph [value 1] [)] endl[]
-    [  (] ph [value 2] [)]
+    [  (] ph [value 2] [)    ]
     [(] ph [value 3] [)] endl[]
   ]
 ]
 
+p [etc.]
+
+p [For example an array of 3 strings is written as:]
+
 ej [
-  [
-    (my string 1)
-    (my string 2)
-    (my string 3)
+  array [
+    [(]str [my string 1][)] endl[]
+    [(]str [my string 2][)] endl[]
+    [(]str [my string 3][)] endl[]
   ]
 ]
 
+p [Non-whitespace characters are not allowed after the last element of the array:]
+
 ej [
   .[bad]
-  [(my value)] endl[]
+  array [
+    [(]ph[my value][)]
+  ] endl[]
   bad [nonblank]
+]
+
+p [or anywhere inbetween the elements:]
+
+ej [
+  .[bad]
+  array [
+    [(]ph[my value][)] endl[]
+    bad [nonblank ] 
+    [(]ph[my value][)]
+  ] endl[]
 ]
 
 ej [
@@ -108,8 +159,20 @@ ej [
   good [    ]
 ]
 
-
 hh [Maps]
+-- [----]
+
+p [
+  [A map is like an array in that it is composed of several values wrapped in () cocatenated together. However in a map, each value is prefixed by a ]
+  b [unique] 
+  [ name, forming a sequence of name-value pairs:]
+]
+
+p [
+  [A map means an ]
+  b [unordered] 
+  [ set of name-value pairs.]
+]
 
 ej [
   map [
@@ -120,15 +183,27 @@ ej [
   ]
 ]
 
-ej [
-  map [
-    name [my name] [ (my value)]
-  ]
-]
+p [Names in a map are much like strings, except that they are always followed by a value wrapped in ():]
 
 ej [
   map [
-    [    ] name [my name] [    ] [(my value)]
+    name [my name] 
+    [ (]
+    str [my value]
+    [)]
+  ]
+]
+
+p [also, leading and trailing whitespace is not considered part of a name:]
+
+ej [
+  map [
+    [    ] 
+    name [my name] 
+    [    ]
+    [(]
+    str [my value]
+    [)]
   ]
 ]
 
@@ -136,9 +211,39 @@ json [
   {"my name": "my value"}
 ]
 
+p [In Easy Jevko, it is not possible to enter a name which has leading or trailing whitespace in it. This means that a JSON object like this:]
+
+json [
+  {"    my name padded with spaces    ": "my value"}
+]
+
+p [Is impossible to represent as a map in Easy Jevko.]
+
+p [Easy Jevko assumes that behavior is usually desirable, as we normally don't want to have leading or trailing whitespace in map names. If we want to ensure that in JSON, we have to trim it. In Easy Jevko this is always unnecessary.]
+
+p [If, for some reason, we'd need whitespace in names then we'd either have to represent our map as an array of pairs:]
+
+ej [
+  array [
+    [(]
+      array [
+        [(] str [    name    ] [)]
+        [(] ph [value] [)]
+      ]
+    [)]
+  ]
+]
+
+p [and convert it to a map on the recieving end.]
+
+p [If this is unnacceptable then we will be better served by a format other than Easy Jevko.]
 
 ej [
   .[bad]
   [my name (my value)
 nonblank]
 ]
+
+hh [Limitations]
+
+p [todo]

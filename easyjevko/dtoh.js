@@ -23,6 +23,8 @@ const dtoh = (jevko) => {
       if (subjevkos.length > 0) throw Error('complex attr')
 
       ret.push(['attr', [key, suffix]])
+    } else if (key === '--') {
+      // skip comment
     } else {
       const op = ctx.get(key) ?? defOp(key)
       ret.push(op(jevko))
@@ -123,6 +125,7 @@ const ctx = new Map([
   ['hh', wrapRecNoClass('h2')],
   ['p', wrapRecNoClass('p')],
   ['a', wrapRecNoClass('a')],
+  ['b', wrapRecNoClass('b')],
   ['ej', wrapRec('pre')('ej')],
   ['ph', wrapRec('span')('ph')],
   ['str', wrapRec('span')('str')],

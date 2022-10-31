@@ -39,6 +39,7 @@ pre {
 }
 .name {
   text-decoration: solid underline #246 4px;
+  color: #7bf;
 }
 .bad {
   color: red;
