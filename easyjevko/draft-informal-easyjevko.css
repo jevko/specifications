@@ -4,6 +4,7 @@ body {
   font-size: x-large;
   margin: auto;
   max-width: 60rem;
+  padding: 1rem;
 }
 a {
   color: yellow;
@@ -12,6 +13,7 @@ pre {
   background-color: #222;
   border-radius: 0.5rem;
   padding: 1rem;
+  overflow: auto;
 }
 
 .code {
