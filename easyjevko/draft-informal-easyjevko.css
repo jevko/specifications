@@ -1,0 +1,82 @@
+body {
+  color: white;
+  background-color: black;
+  font-size: x-large;
+  padding: 3rem;
+}
+a {
+  color: yellow;
+}
+pre {
+  background-color: #222;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.code {
+  background-color: #222;
+}
+.ph {
+  color: #666;
+  background-color: #333;
+  font-style: italic;
+}
+.str {
+  color: #fa8;
+  text-decoration: solid underline #430 4px;
+}
+.json .str {
+  text-decoration: none;
+}
+.array {
+  text-decoration: solid underline #240 4px;
+}
+.map {
+  text-decoration: solid underline #024 4px;
+}
+.di {
+  text-decoration: solid underline #642 4px;
+}
+.name {
+  text-decoration: solid underline #246 4px;
+}
+.bad {
+  color: red;
+  background-color: #633;
+}
+.good {
+  color: green;
+  background-color: #363;
+}
+.ej {
+  border-left: 4px solid #88f;
+}
+.ej:before {
+  content: "Easy Jevko";
+  display: block;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  /* padding-left: 1rem; */
+}
+.json {
+  border-left: 4px solid orange;
+}
+.json:before {
+  content: "JSON";
+  display: block;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  /* padding-left: 1rem; */
+}
+.ej.bad {
+  color: red;
+}
+.ej.good {
+  color: green;
+}
+.ej.bad:before {
+  content: "Easy Jevko: error"
+}
+.ej.good:before {
+  content: "Easy Jevko: ok"
+}

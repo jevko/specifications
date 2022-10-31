@@ -1,0 +1,1 @@
+deno run --allow-read dtoh.js > spec.html

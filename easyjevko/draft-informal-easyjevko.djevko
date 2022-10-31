@@ -1,0 +1,144 @@
+h [Easy Jevko]
+
+p [
+  [Easy Jevko is a very simple and lightweight data interchange format built on ]
+  a [
+    href=[https://jevko.org]
+    [Jevko]
+  ]
+  [.]
+
+  
+]
+
+p [3 kinds of values: strings, arrays, maps.]
+
+ej [
+  ph [value ...]
+]
+
+hh [Strings]
+
+p [
+  Free-floating text which is not followed by ( is a string.
+]
+
+ej [
+  str [my string]
+]
+
+json [
+  str ["my string"]
+]
+
+ej [
+  str [
+    [my string with special chars: ]
+    di [~~] [ ] di [~(] [ ] di [~)]
+  ] 
+]
+
+json [
+  str ["my string with special chars: ~ ( )"]
+]
+
+
+ej [
+  str [
+    ph [...] endl []
+    [    my padded multilnie string    ]
+    endl [] ph [...]
+  ] 
+]
+
+json [
+  str [
+    ["]
+    ph [...] 
+    [\n    my padded multilnie string    \n] 
+    ph [...]
+    ["]
+  ]
+]
+
+hh [Arrays]
+
+
+ej [
+  array [
+    [(] ph [value 1] [)]
+    [(] ph [value 2] [)]
+    [(] ph [value 3] [)]
+  ]
+]
+
+ej [
+  array [
+    [(] ph [value 1] [)] endl[]
+    [(] ph [value 2] [)] endl[]
+    [(] ph [value 3] [)] endl[]
+  ]
+]
+
+ej [
+  array [
+    [(] ph [value 1] [)] endl[]
+    [  (] ph [value 2] [)]
+    [(] ph [value 3] [)] endl[]
+  ]
+]
+
+ej [
+  [
+    (my string 1)
+    (my string 2)
+    (my string 3)
+  ]
+]
+
+ej [
+  .[bad]
+  [(my value)] endl[]
+  bad [nonblank]
+]
+
+ej [
+  .[good]
+  [(my value)] endl[]
+  good [    ]
+]
+
+
+hh [Maps]
+
+ej [
+  map [
+    ph [name 1] [ (] ph [value 1] [)] endl[]
+    ph [name 2] [ (] ph [value 2] [)] endl[]
+    ph [name 3] [ (] ph [value 3] [)] endl[]
+    ph[...]
+  ]
+]
+
+ej [
+  map [
+    name [my name] [ (my value)]
+  ]
+]
+
+ej [
+  map [
+    [    ] name [my name] [    ] [(my value)]
+  ]
+]
+
+json [
+  {"my name": "my value"}
+]
+
+
+ej [
+  .[bad]
+  [my name (my value)
+nonblank]
+]

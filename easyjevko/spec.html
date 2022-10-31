@@ -1,0 +1,92 @@
+<!doctype html>
+<style>body {
+  color: white;
+  background-color: black;
+  font-size: x-large;
+  padding: 3rem;
+}
+a {
+  color: yellow;
+}
+pre {
+  background-color: #222;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.code {
+  background-color: #222;
+}
+.ph {
+  color: #666;
+  background-color: #333;
+  font-style: italic;
+}
+.str {
+  color: #fa8;
+  text-decoration: solid underline #430 4px;
+}
+.json .str {
+  text-decoration: none;
+}
+.array {
+  text-decoration: solid underline #240 4px;
+}
+.map {
+  text-decoration: solid underline #024 4px;
+}
+.di {
+  text-decoration: solid underline #642 4px;
+}
+.name {
+  text-decoration: solid underline #246 4px;
+}
+.bad {
+  color: red;
+  background-color: #633;
+}
+.good {
+  color: green;
+  background-color: #363;
+}
+.ej {
+  border-left: 4px solid #88f;
+}
+.ej:before {
+  content: "Easy Jevko";
+  display: block;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  /* padding-left: 1rem; */
+}
+.json {
+  border-left: 4px solid orange;
+}
+.json:before {
+  content: "JSON";
+  display: block;
+  border-bottom: 1px solid gray;
+  font-style: italic;
+  /* padding-left: 1rem; */
+}
+.ej.bad {
+  color: red;
+}
+.ej.good {
+  color: green;
+}
+.ej.bad:before {
+  content: "Easy Jevko: error"
+}
+.ej.good:before {
+  content: "Easy Jevko: ok"
+}</style> <h1>Easy Jevko</h1><p>Easy Jevko is a very simple and lightweight data interchange format built on <a href="https://jevko.org">Jevko</a>.</p><p>3 kinds of values: strings, arrays, maps.</p><pre class="ej"><span class="ph">value ...</span></pre><h2>Strings</h2><p>
+  Free-floating text which is not followed by [ is a string.
+</p><pre class="ej"><span class="str">my string</span></pre><pre class="json"><span class="str">"my string"</span></pre><pre class="ej"><span class="str">my string with special chars: <span class="di">``</span> <span class="di">`[</span> <span class="di">`]</span></span></pre><pre class="json"><span class="str">"my string with special chars: ` [ ]"</span></pre><pre class="ej"><span class="str"><span class="ph">...</span><br/>    my padded multilnie string    <br/><span class="ph">...</span></span></pre><pre class="json"><span class="str">"<span class="ph">...</span>\n    my padded multilnie string    \n<span class="ph">...</span>"</span></pre><h2>Arrays</h2><pre class="ej"><span class="array">[<span class="ph">value 1</span>][<span class="ph">value 2</span>][<span class="ph">value 3</span>]</span></pre><pre class="ej"><span class="array">[<span class="ph">value 1</span>]<br/>[<span class="ph">value 2</span>]<br/>[<span class="ph">value 3</span>]<br/></span></pre><pre class="ej"><span class="array">[<span class="ph">value 1</span>]<br/>  [<span class="ph">value 2</span>][<span class="ph">value 3</span>]<br/></span></pre><pre class="ej">
+    [my string 1]
+    [my string 2]
+    [my string 3]
+  </pre><pre class="bad ej">[my value]<br/><span class="bad">nonblank</span></pre><pre class="good ej">[my value]<br/><span class="good">    </span></pre><h2>Maps</h2><pre class="ej"><span class="map"><span class="ph">name 1</span> [<span class="ph">value 1</span>]<br/><span class="ph">name 2</span> [<span class="ph">value 2</span>]<br/><span class="ph">name 3</span> [<span class="ph">value 3</span>]<br/><span class="ph">...</span></span></pre><pre class="ej"><span class="map"><span class="name">my name</span> [my value]</span></pre><pre class="ej"><span class="map">    <span class="name">my name</span>    [my value]</span></pre><pre class="json">
+  {"my name": "my value"}
+</pre><pre class="bad ej">my name [my value]
+nonblank</pre>
