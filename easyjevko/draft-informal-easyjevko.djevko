@@ -18,8 +18,6 @@ p [
   [.]
 ]
 
-p [3 kinds of values: strings, arrays, maps.]
-
 p [Easy Jevko code is marked like this:]
 
 ej [
@@ -33,14 +31,16 @@ json [
 ]
 
 p [
-  ph [value ...] [ marks a placeholder]
+  ph [value ...] [ marks a placeholder.]
 ]
+
+p [There are only 3 types of values in Easy Jevko: strings, lists, and maps.]
 
 hh [Strings]
 -- [-------]
 
 p [
-  Free-floating text which is not followed by ( is a string.
+  [A string is free-floating text not followed by ] ope[] [.]
 ]
 
 ej [
@@ -83,13 +83,53 @@ json [
   ]
 ]
 
-hh [Arrays]
+p [All whitespace and other characters in a string represent themselves, except for the following three digraphs:]
+
+ol [
+  li [
+    code[esc[]esc[]]
+  ]
+  li [
+    code[esc[]ope[]]
+  ]
+  li [
+    code[esc[]clo[]]
+  ]
+]
+
+p [They represent the three special characters of Jevko, respectively:]
+
+ol [
+  li [
+    code[esc[]]
+  ]
+  li [
+    code[ope[]]
+  ]
+  li [
+    code[clo[]]
+  ]
+]
+
+p [Otherwise there are no escape sequences in Easy Jevko strings like in JSON strings.]
+
+ul [
+  li [Multiline strings supported.]
+  li [Except 3 digraphs, no escape sequences.]
+  li [Strings can contain any unicode code point, including nonprintable characters.]
+]
+
+hh [Lists]
 -- [------]
 
-p [An array is several values wrapped in () and concatenated together.]
+p [
+  [A list is several values wrapped in ] 
+  ope[]clo[] 
+  [ and concatenated together.]
+]
 
 p [
-  [Like in JSON, an array means an ]
+  [A list is like a JSON array in that it means an ]
   b [ordered] 
   [ list of values.]
 ]
@@ -124,7 +164,7 @@ ej [
 
 p [etc.]
 
-p [For example an array of 3 strings is written as:]
+p [For example an array of 3 strings can be written as:]
 
 ej [
   array [
@@ -173,7 +213,7 @@ hh [Maps]
 -- [----]
 
 p [
-  [A map is like an array in that it is composed of several values wrapped in () cocatenated together. However in a map, each value is prefixed by a ]
+  [A map is like a list in that it is composed of several values wrapped in ] ope[]clo[] [ cocatenated together. However in a map, each value is prefixed by a ]
   b [unique] 
   [ name, forming a sequence of name-value pairs:]
 ]
@@ -196,7 +236,11 @@ ej [
 hhh [Name]
 --  [----]
 
-p [A name in a map is much like a string, except that it is always followed by a value wrapped in ():]
+p [
+  [A name in a map is much like a string, except that it is always followed by a value wrapped in ]
+  ope[]clo[]
+  [:]
+]
 
 ej [
   map [
@@ -240,7 +284,7 @@ json [
 
 p [Is impossible to represent as a map in Easy Jevko.]
 
-p [Easy Jevko assumes that behavior is usually desirable, as we normally don't want to have leading or trailing whitespace in map names. If we want to ensure that in JSON, we have to trim it. In Easy Jevko this is always unnecessary.]
+p [Easy Jevko assumes that this behavior is usually desirable, as we normally don't want to have leading or trailing whitespace in map names. If we want to ensure that in JSON, we have to trim it. In Easy Jevko this is always unnecessary.]
 
 p [If, for some reason, we'd need whitespace in names then we'd either have to represent our map as an array of pairs:]
 
@@ -263,6 +307,30 @@ ej [
   .[bad]
   [my name (my value)
 nonblank]
+]
+
+hh [Nesting]
+
+p [Like in JSON, values in Easy Jevko can be freely nested, e.g.:]
+
+ej [
+  array [
+    ope[] map [endl[]
+    [  ] name [my key] [ ] ope[] str[my value] clo[] endl[]
+    ] clo[] endl[]
+    ope[] str [my value 2] clo[]
+  ]
+]
+
+hh [Advantages over JSON]
+
+ul [
+  li [closed under concatenation -- no need for jsonlines, ndjson, etc.]
+  li [no confusion w/ JS semantics]
+  li [clear semantics -- maps unique, unordered]
+  li [no numbers = no surprise issues with large numbers]
+  li [overall simpler]
+  li [compatible w/ Jevko]
 ]
 
 hh [Limitations]
@@ -291,7 +359,15 @@ pre [
   no syntactically-driven typing
 ]
 
+hh [How to]
+
+p [have nums/bools/etc. -- use strings and parse reciever-side, e.g. "true" -> true, "999999999" -> 999999999]
+
+p [this gives you ultimate control over parsing primitive values rather than relying on parser implementations; this is sometimes desirable even in JSON, especially when parsing large numbers or IEEE754 Infinity/NaN]
+
 hh [Whitespace trimming details]
+
+p [' ' \n \r \t \v]
 
 a [
   href=[https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trim]
