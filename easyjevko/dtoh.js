@@ -10,7 +10,7 @@ const par = parseJevko(str)
 const dtoh = (jevko) => {
   const {subjevkos, suffix} = jevko
 
-  if (subjevkos.length === 0) return [['text', ptob(suffix)]]
+  if (subjevkos.length === 0) return [['text', suffix]]
 
   if (suffix.trim() !== '') throw Error('suf nonem')
 
@@ -119,7 +119,25 @@ const ctx = new Map([
     const {subjevkos, suffix} = jevko
     if (subjevkos.length !== 0) throw error('subs > 0')
 
-    return ['text', ptob(suffix)]
+    return ['text', suffix]
+  }],
+  ['ope', (jevko) => {
+    const {subjevkos, suffix} = jevko
+    if (subjevkos.length !== 0) throw error('subs > 0')
+
+    return ['text', '[']
+  }],
+  ['clo', (jevko) => {
+    const {subjevkos, suffix} = jevko
+    if (subjevkos.length !== 0) throw error('subs > 0')
+
+    return ['text', ']']
+  }],
+  ['esc', (jevko) => {
+    const {subjevkos, suffix} = jevko
+    if (subjevkos.length !== 0) throw error('subs > 0')
+
+    return ['text', '`']
   }],
   ['h', wrapRecNoClass('h1')],
   ['hh', wrapRecNoClass('h2')],
@@ -150,4 +168,4 @@ const ctx = new Map([
 const ret = dtoh(par)
 const ret2 = htoh(ret)
 
-console.log(`<!doctype html>\n<style>${cssStr}</style>`, ret2)
+console.log(`<!doctype html>\n	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />\n<style>${cssStr}</style>`, ret2)

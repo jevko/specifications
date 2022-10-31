@@ -54,12 +54,14 @@ json [
 ej [
   str [
     [my string with special chars: ]
-    di [~~] [ ] di [~(] [ ] di [~)]
+    di [esc[]esc[]] [ ] di [esc[]ope[]] [ ] di [esc[]clo[]]
   ] 
 ]
 
 json [
-  str ["my string with special chars: ~ ( )"]
+  str [
+    ["my string with special chars: ]esc[] [ ] ope[] [ ] clo[] ["]
+  ]
 ]
 
 
@@ -94,9 +96,9 @@ p [
 
 ej [
   array [
-    [(] ph [value 1] [)]
-    [(] ph [value 2] [)]
-    [(] ph [value 3] [)]
+    ope[] ph [value 1] clo[]
+    ope[] ph [value 2] clo[]
+    ope[] ph [value 3] clo[]
   ]
 ]
 
@@ -104,9 +106,9 @@ p [The values may be separated or surrounded by whitespace, e.g.:]
 
 ej [
   array [
-    [(] ph [value 1] [)] endl[]
-    [(] ph [value 2] [)] endl[]
-    [(] ph [value 3] [)] endl[]
+    ope[] ph [value 1] clo[] endl[]
+    ope[] ph [value 2] clo[] endl[]
+    ope[] ph [value 3] clo[] endl[]
   ]
 ]
 
@@ -114,9 +116,9 @@ p [or:]
 
 ej [
   array [
-    [(] ph [value 1] [)] endl[]
-    [  (] ph [value 2] [)    ]
-    [(] ph [value 3] [)] endl[]
+    ope[] ph [value 1] clo[] endl[]
+    [  ]ope[] ph [value 2] clo[][    ]
+    ope[] ph [value 3] clo[] endl[]
   ]
 ]
 
@@ -126,18 +128,18 @@ p [For example an array of 3 strings is written as:]
 
 ej [
   array [
-    [(]str [my string 1][)] endl[]
-    [(]str [my string 2][)] endl[]
-    [(]str [my string 3][)] endl[]
+    ope[] str [my string 1] clo[] endl[]
+    ope[] str [my string 2] clo[] endl[]
+    ope[] str [my string 3] clo[] endl[]
   ]
 ]
 
 json [
-  array [[(]endl[]
+  array [ope[]endl[]
     [  ] str ["my string 1"][,] endl[]
     [  ] str ["my string 2"][,] endl[]
     [  ] str ["my string 3"][,] endl[]
-  [)]]
+  clo[]]
 ]
 
 p [Non-whitespace characters are not allowed after the last element of the array:]
@@ -145,7 +147,7 @@ p [Non-whitespace characters are not allowed after the last element of the array
 ej [
   .[bad]
   array [
-    [(]ph[my value][)]
+    ope[]ph[my value]clo[]
   ] endl[]
   bad [nonblank]
 ]
@@ -155,9 +157,9 @@ p [or anywhere inbetween the elements:]
 ej [
   .[bad]
   array [
-    [(]ph[my value][)] endl[]
+    ope[]ph[my value]clo[] endl[]
     bad [nonblank ] 
-    [(]ph[my value][)]
+    ope[]ph[my value]clo[]
   ] endl[]
 ]
 
@@ -184,9 +186,9 @@ p [
 
 ej [
   map [
-    ph [name 1] [ (] ph [value 1] [)] endl[]
-    ph [name 2] [ (] ph [value 2] [)] endl[]
-    ph [name 3] [ (] ph [value 3] [)] endl[]
+    ph [name 1] [ ]ope[] ph [value 1] clo[] endl[]
+    ph [name 2] [ ]ope[] ph [value 2] clo[] endl[]
+    ph [name 3] [ ]ope[] ph [value 3] clo[] endl[]
     ph[...]
   ]
 ]
@@ -199,9 +201,9 @@ p [A name in a map is much like a string, except that it is always followed by a
 ej [
   map [
     name [my name] 
-    [ (]
+    [ ]ope[]
     str [my value]
-    [)]
+    clo[]
   ]
 ]
 
@@ -212,9 +214,9 @@ ej [
     [    ] 
     name [my name] 
     [    ]
-    [(]
+    ope[]
     str [my value]
-    [)]
+    clo[]
   ]
 ]
 
@@ -244,12 +246,12 @@ p [If, for some reason, we'd need whitespace in names then we'd either have to r
 
 ej [
   array [
-    [(]
+    ope[]
       array [
-        [(] str [    name    ] [)]
-        [(] ph [value] [)]
+        ope[] str [    name    ] clo[]
+        ope[] ph [value] clo[]
       ]
-    [)]
+    clo[]
   ]
 ]
 
@@ -287,4 +289,12 @@ pre [
     no numbers, true, false, null
 
   no syntactically-driven typing
+]
+
+hh [Whitespace trimming details]
+
+a [
+  href=[https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trim]
+
+  [ecma262: String.prototype.trim()]
 ]
