@@ -132,6 +132,14 @@ ej [
   ]
 ]
 
+json [
+  array [[(]endl[]
+    [  ] str ["my string 1"][,] endl[]
+    [  ] str ["my string 2"][,] endl[]
+    [  ] str ["my string 3"][,] endl[]
+  [)]]
+]
+
 p [Non-whitespace characters are not allowed after the last element of the array:]
 
 ej [
@@ -208,7 +216,13 @@ ej [
 ]
 
 json [
-  {"my name": "my value"}
+  map [
+    [{] 
+    name ["my name"]
+    [: ] 
+    str ["my value"]
+    [}]
+  ]
 ]
 
 p [In Easy Jevko, it is not possible to enter a name which has leading or trailing whitespace in it. This means that a JSON object like this:]
