@@ -40,7 +40,7 @@ hh [Strings]
 -- [-------]
 
 p [
-  [A string is free-floating text not followed by ] ope[] [.]
+  [A string is free-floating text not followed by ] code[ope[]] [.]
 ]
 
 ej [
@@ -114,8 +114,9 @@ ol [
 p [Otherwise there are no escape sequences in Easy Jevko strings like in JSON strings.]
 
 ul [
-  li [Multiline strings supported.]
-  li [Except 3 digraphs, no escape sequences.]
+  li [Easy Jevko strings are not wrapped in quotemarks.]
+  li [Multiline strings are supported.]
+  li [Except 3 digraphs, there are no escape sequences.]
   li [Strings can contain any unicode code point, including nonprintable characters.]
 ]
 
@@ -205,7 +206,7 @@ ej [
 
 ej [
   .[good]
-  [(my value)] endl[]
+  ope[][my value]clo[] endl[]
   good [    ]
 ]
 
@@ -279,7 +280,13 @@ json [
 p [In Easy Jevko, it is not possible to enter a name which has leading or trailing whitespace in it. This means that a JSON object like this:]
 
 json [
-  {"    my name padded with spaces    ": "my value"}
+  map[
+    [{]
+    name["    my name padded with spaces    "]
+    [: ] 
+    str["my value"]
+    [}]
+  ]
 ]
 
 p [Is impossible to represent as a map in Easy Jevko.]
@@ -305,8 +312,8 @@ p [If this is unnacceptable then we will be better served by a format other than
 
 ej [
   .[bad]
-  [my name (my value)
-nonblank]
+  [my name ] ope[][my value]clo[]endl[]
+  [nonblank]
 ]
 
 hh [Nesting]
