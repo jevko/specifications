@@ -1,5 +1,3 @@
-import {trim3} from 'https://cdn.jsdelivr.net/gh/jevko/jevkoutils.js@v0.1.6/mod.js'
-
 import {parseJevko} from 'https://cdn.jsdelivr.net/gh/jevko/parsejevko.js@v0.1.3/mod.js'
 
 const str = await Deno.readTextFile("draft-informal-easyjevko.djevko")
@@ -159,6 +157,7 @@ const ctx = new Map([
   ['bad', wrapRec('span')('bad')],
   ['good', wrapRec('span')('good')],
   ['name', wrapRec('span')('name')],
+  ['note', wrapRec('div')('note')],
   ['json', wrapRec('pre')('json')],
   ['.', jevko => {
     const {subjevkos, suffix} = jevko

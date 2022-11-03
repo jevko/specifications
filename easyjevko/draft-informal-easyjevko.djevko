@@ -39,6 +39,10 @@ p [There are only 3 types of values in Easy Jevko: strings, lists, and maps.]
 hh [Strings]
 -- [-------]
 
+note [
+  not sure if I should use the name "strings" or if it will give users the wrong idea.
+]
+
 p [
   [A string is free-floating text not followed by ] code[ope[]] [.]
 ]
@@ -121,7 +125,7 @@ ul [
 ]
 
 hh [Lists]
--- [------]
+-- [-----]
 
 p [
   [A list is several values wrapped in ] 
@@ -381,3 +385,9 @@ a [
 
   [ecma262: String.prototype.trim()]
 ]
+
+h [Jevko predicates]
+
+hh [simple?]
+
+p [True only if Jevko has 0 Subjevkos.]

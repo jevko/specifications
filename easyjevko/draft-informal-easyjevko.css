@@ -84,3 +84,9 @@ pre {
 .ej.good:before {
   content: "Easy Jevko: ok"
 }
+
+.note {
+  background-color: #2f2f20;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
