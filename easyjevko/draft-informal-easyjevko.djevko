@@ -391,3 +391,33 @@ h [Jevko predicates]
 hh [simple?]
 
 p [True only if Jevko has 0 Subjevkos.]
+
+hh [suffix blank?]
+
+p [True only if Jevko's Suffix contains only (zero or more) whitespace Characters.]
+
+note [Define whitespace characters in terms of ecma262 trim]
+
+h [Subjevko predicates]
+
+note ["Subjevko predicates" is an inaccurate name]
+
+note [perhaps these should be made even more granular.]
+
+hh [first prefix empty?]
+
+p [True only if the first Subjevko within a Jevko has 0 Symbols in its Prefix.]
+
+hh [prefixes unique?]
+
+p [True only if within a Jevko there are no two Subjevkos with identical Prefix.]
+
+h [Jevko selectors]
+
+hh [first Subjevko]
+
+p [Selects the first Subjevko within a Jevko.]
+
+hh [rest Subjevkos]
+
+p [Selects all Subjevkos except the first within a Jevko.]
