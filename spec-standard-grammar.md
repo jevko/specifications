@@ -206,7 +206,7 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 
 ### Etymology and pronunciation
 
-The name *Jevko* /ˈdʒef.kɔ/ is derived from Polish *drzewko* (/ˈdʐɛf.kɔ/), meaning *small tree*.
+The name [*Jevko* /ˈd͡ʒef.kəʊ/](http://ipa-reader.xyz/?text=%CB%88d%CD%A1%CA%92ef.k%C9%99%CA%8A&voice=Joey) is derived from Polish [*drzewko* /ˈdʐɛf.kɔ/](https://en.wiktionary.org/wiki/drzewko), meaning small tree.
 
 ***
 
