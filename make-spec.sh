@@ -1,0 +1,1 @@
+pandoc spec-standard-grammar.md -o spec-standard-grammar.pdf --pdf-engine=xelatex --variable mainfont="Liberation Serif" -V geometry:margin=2cm
