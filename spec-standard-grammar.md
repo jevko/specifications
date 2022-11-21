@@ -49,7 +49,7 @@ All remaining rules are non-recursive. Notably:
 All rules are described and formally defined in the following sections. The first section covers rules for delimiters. The remaining sections describe the rest of the rules, top to bottom, starting with `Jevko`.
 
 
-\pagebreak
+\newpage
 <div style="page-break-after: always;"></div>
 
 ## Delimiters
@@ -159,17 +159,19 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 
 # Normative references
 
-<a id="ref-unicode"></a>
+::::: {#ref-unicode}
 [Unicode] The Unicode Consortium, "The Unicode Standard", the latest version, <http://www.unicode.org/versions/latest/>.
+:::::
 
-<a id="ref-rfc-5234"></a>
+::::: {#ref-rfc-5234}
 [RFC 5234] Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", STD 68, RFC 5234, DOI 10.17487/RFC5234, January 2008, <https://www.rfc-editor.org/info/rfc5234>.
+:::::
 
 # See also
 
-* [Jevko examples](https://github.com/jevko/examples)
+* Jevko examples: <https://github.com/jevko/examples>
 
-* [Jevko interactive railroad diagrams](https://jevko.org/diagram.xhtml)
+* Jevko interactive railroad diagrams: <https://jevko.org/diagram.xhtml>
 
 # Copyright and license
 
