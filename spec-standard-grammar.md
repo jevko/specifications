@@ -1,12 +1,10 @@
-# The Jevko Syntax: Standard Grammar Specification
+---
+title: "The Jevko Syntax: Standard Grammar Specification"
+author: "by Darius J Chuck"
+date: "First Edition: February 2022. Revised: November 2022."
+---
 
-First Edition, February 2022.
-
-by Darius J Chuck
-
-<div style="page-break-after: always;"></div>
-
-## Introduction and scope
+# Introduction and scope
 
 Jevko is a versatile minimal syntax for encoding tree-structured information.
 
@@ -18,17 +16,19 @@ These additional building blocks are specified separately. The purpose of this s
 
 The formal grammar definitions in this document use the ABNF notation [[RFC 5234]](#ref-rfc-5234).
 
-<div style="page-break-after: always;"></div>
+## Etymology and pronunciation
 
-## Valid Jevko sequence
+The name [*Jevko* /ˈd͡ʒef.kəʊ/](http://ipa-reader.xyz/?text=%CB%88d%CD%A1%CA%92ef.k%C9%99%CA%8A&voice=Joey) is derived from Polish [*drzewko* /ˈdʐɛf.kɔ/](https://en.wiktionary.org/wiki/drzewko), meaning small tree.
 
-A valid Jevko sequence is a sequence of Unicode code points which conforms to the Jevko rule defined in this document.
+# Valid Jevko sequence
 
-## The rules 
+A valid Jevko sequence is a sequence of Unicode code points which conforms to the [`Jevko`](#jevko) rule defined in this document.
+
+# The rules 
 
 The syntax of Jevko is extremely minimal.
 
-There are two main grammatical rules: the `Jevko` rule and the `Subjevko` rule.
+There are two main grammatical rules: the [`Jevko`](#jevko) rule and the [`Subjevko`](#subjevko) rule.
 
 The `Jevko` rule is the *start symbol* of the grammar. 
 
@@ -48,9 +48,11 @@ All remaining rules are non-recursive. Notably:
 
 All rules are described and formally defined in the following sections. The first section covers rules for delimiters. The remaining sections describe the rest of the rules, top to bottom, starting with `Jevko`.
 
+
+\pagebreak
 <div style="page-break-after: always;"></div>
 
-### Delimiters
+## Delimiters
 
 Jevko is based around three delimiters, named by the Delimiter rule:
 
@@ -74,7 +76,7 @@ Closer  = "]"
 Escaper = "`"
 ```
 
-### Jevko
+## Jevko
 
 A `Jevko` is a sequence of zero or more `Subjevko`s followed by a `Suffix`.
 
@@ -82,7 +84,7 @@ A `Jevko` is a sequence of zero or more `Subjevko`s followed by a `Suffix`.
 Jevko = *Subjevko Suffix
 ```
 
-### Subjevko
+## Subjevko
 
 A `Subjevko` is a `Prefix` followed by an `Opener`, followed by a `Jevko`, followed by a `Closer`.
 
@@ -96,7 +98,7 @@ Equivalently:
 Subjevko = Prefix "[" Jevko "]"
 ```
 
-### Prefix
+## Prefix
 
 A `Prefix` is an alias for `Text`:
 
@@ -106,9 +108,7 @@ Prefix = Text
 
 This alias identifies that the `Text` is a part of a `Subjevko`. A `Prefix` is *always* followed by an `Opener`.
 
-<div style="page-break-after: always;"></div>
-
-### Suffix
+## Suffix
 
 A `Suffix` is an alias for `Text`:
 
@@ -118,7 +118,7 @@ Suffix = Text
 
 This alias identifies that the `Text` is a part of `Jevko`. A `Suffix` is *never* followed by an `Opener`.
 
-### Text
+## Text
 
 `Text` is a sequence of zero or more `Symbol`s:
 
@@ -126,7 +126,7 @@ This alias identifies that the `Text` is a part of `Jevko`. A `Suffix` is *never
 Text = *Symbol
 ```
 
-### Symbol
+## Symbol
 
 A `Symbol` is either a `Digraph` or a `Character`:
 
@@ -134,7 +134,7 @@ A `Symbol` is either a `Digraph` or a `Character`:
 Symbol = Digraph / Character
 ```
 
-### Digraph
+## Digraph
 
 A `Digraph` is an `Escaper` followed by a `Delimiter`:
 
@@ -149,7 +149,7 @@ Digraph = "`" ("`" / "[" / "]")
 Digraph = "``" / "`[" / "`]"
 ```
 
-### Character
+## Character
 
 A `Character` is any code point which is not a `Delimiter`:
 
@@ -157,9 +157,7 @@ A `Character` is any code point which is not a `Delimiter`:
 Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 ```
 
-<div style="page-break-after: always;"></div>
-
-## Normative references
+# Normative references
 
 <a id="ref-unicode"></a>
 [Unicode] The Unicode Consortium, "The Unicode Standard", the latest version, <http://www.unicode.org/versions/latest/>.
@@ -167,15 +165,41 @@ Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 <a id="ref-rfc-5234"></a>
 [RFC 5234] Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", STD 68, RFC 5234, DOI 10.17487/RFC5234, January 2008, <https://www.rfc-editor.org/info/rfc5234>.
 
-## See also
+# See also
 
 * [Jevko examples](https://github.com/jevko/examples)
 
 * [Jevko interactive railroad diagrams](https://jevko.org/diagram.xhtml)
 
-## Appendix
+# Copyright and license
 
-### The Standard Grammar ABNF in one page
+© 2022 [Jevko.org](https://jevko.org)
+
+This document is licensed under the [MIT License](https://choosealicense.com/licenses/mit/):
+
+```
+Copyright © 2022 Jevko.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+# Appendix: The Standard Grammar ABNF in one page
 
 ```abnf
 ; start symbol, main rule #1
@@ -201,13 +225,3 @@ Digraph = Escaper Delimiter
 ; Character is any code point which is not a Delimiter
 Character = %x0-5a / %x5c / %x5e-5f / %x61-10ffff
 ```
-
-<div style="page-break-after: always;"></div>
-
-### Etymology and pronunciation
-
-The name [*Jevko* /ˈd͡ʒef.kəʊ/](http://ipa-reader.xyz/?text=%CB%88d%CD%A1%CA%92ef.k%C9%99%CA%8A&voice=Joey) is derived from Polish [*drzewko* /ˈdʐɛf.kɔ/](https://en.wiktionary.org/wiki/drzewko), meaning small tree.
-
-***
-
-© 2022 [Jevko.org](https://jevko.org)
