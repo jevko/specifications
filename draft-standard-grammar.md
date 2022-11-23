@@ -1,5 +1,7 @@
 NOTE: this draft is superseded by [this specification](spec-standard-grammar.md).
 
+<span style="text-decoration:line-through;">
+
 # Draft
 # The Jevko Syntax: Standard Grammar Specification
 
@@ -220,3 +222,5 @@ The name *Jevko* /ˈdʒef.kɔ/ is derived from Polish *drzewko* (/ˈdʐɛf.kɔ/)
 ***
 
 © 2022 [Jevko.org](https://jevko.org)
+
+</span>
