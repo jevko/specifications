@@ -19,8 +19,8 @@ Subjevko = Prefix Opener Jevko Closer / Prefix Escaper "/" HeredocId "/" Heredoc
 where:
 
 ```abnf
-HeredocId = <any codepoint except "/">*
-Heredoc = <any code point>*
+HeredocId = *<any codepoint except "/">
+Heredoc = *<any code point>
 ```
 
 additionally:
