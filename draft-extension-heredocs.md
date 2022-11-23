@@ -4,6 +4,12 @@ author: "by Darius J Chuck"
 date: "Draft: November 2022."
 ---
 
+## Illustration
+
+![heredoc screenshot](heredoc.png)
+
+## Details
+
 Extends the `Subjevko` rule from:
 
 ```abnf
