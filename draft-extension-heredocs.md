@@ -1,7 +1,7 @@
 ---
 title: "[DRAFT] The Jevko Syntax:  Heredoc Extension Specification"
 author: "by Darius J Chuck"
-date: "Draft: November 2022."
+date: "Draft: December 2022."
 ---
 
 ## Illustration
@@ -19,84 +19,85 @@ Subjevko = Prefix Opener Jevko Closer
 to:
 
 ```abnf
-Subjevko = Prefix Opener Jevko Closer / Prefix Escaper "/" HeredocId "/" Heredoc "/" HeredocId "/"
+Subjevko = Prefix Opener Jevko Closer / Prefix Escaper Quoter HeredocTag Quoter Heredoc Quoter HeredocTag Quoter
 ```
 
 where:
 
 ```abnf
-HeredocId = *<any codepoint except "/">
+Quoter = "'"
+HeredocTag = *<any codepoint except Quoter>
 Heredoc = *<any code point>
 ```
 
 additionally:
 
-* the second instance of `HeredocId` must be identical to the first 
+* the second instance of `HeredocTag` must be identical to the first 
 * and `Heredoc` must not contain the sequence:
 
 ```abnf
-"/" HeredocId "/"
+Quoter HeredocTag Quoter
 ```
 
-where `HeredocId` is also identical to the first `HeredocId` instance.
+where `HeredocTag` is also identical to the first `HeredocTag` instance.
 
 ## Examples of valid heredocs
 
-Empty `Heredoc` with empty `HeredocId`:
+Empty `Heredoc` with empty `HeredocTag`:
 
 ```
-some prefix `////
-```
-
-***
-
-Empty `Heredoc` with `HeredocId` = `some id`
-
-```
-some prefix `/some id//some id/
+some prefix `''''
 ```
 
 ***
 
-Nonempty `Heredoc` with empty `HeredocId`:
+Empty `Heredoc` with `HeredocTag` = `some tag`
 
 ```
-some prefix `//heredoc contents which contain []`]//
+some prefix `'some tag''some tag'
+```
+
+***
+
+Nonempty `Heredoc` with empty `HeredocTag`:
+
+```
+some prefix `''heredoc contents which contain []`]''
 ```
 
 in this case `Heredoc` = `` heredoc contents which contain []`] ``.
 
 ## Examples of invalid heredocs
 
-What looks like empty Heredoc with `HeredocId` = `some id`, but the second instance of `HeredocId` (`some other id`) does not match the first:
+What looks like empty Heredoc with `HeredocTag` = `some tag`, but the second instance of `HeredocTag` (`some other tag`) does not match the first:
 
 ```
-some prefix `/some id//some other id/
+some prefix `'some tag''some other tag'
 ```
 
-in this case `/some other id/` would actually be considered part of the `Heredoc` and the second instance would be considered missing.
+in this case `'some other tag'` would actually be considered part of the `Heredoc` and the second instance would be considered missing.
 
 ***
 
-What looks like empty Heredoc with `HeredocId` = `some id`, but the `Heredoc` contains the forbidden sequence `/some id/`:
+What looks like empty Heredoc with `HeredocTag` = `some tag`, but the `Heredoc` contains the forbidden sequence `'some tag'`:
 
 ```
-some prefix `/some id/content which contains /some id/ and continues until here/some id/
+some prefix `'some tag'content which contains 'some tag' and continues until here'some tag'
 ```
 
-in this case `Heredoc` = `content which contains ` rather than `content which contains /some id/ and continues until here`. The remainder of the example (` and continues until here/some id/`) is actually a Suffix of the parent Jevko. 
+in this case `Heredoc` = `content which contains ` rather than `content which contains 'some tag' and continues until here`. The remainder of the example (` and continues until here'some tag'`) is actually a Suffix of the parent Jevko. 
 
 Alternatively, if this example was to continue further like this:
 
 ```
-some prefix `/some id/content which contains /some id/ and continues until here/some id/
+some prefix `'some tag'content which contains 'some tag' and continues until here'some tag'
 another prefix [something else]
 ```
 
 then the remainder is actually part of the Prefix of the next Subjevko, making the Prefix:
 
 ```
- and continues until here/some id/
+ and continues until here'some tag'
 another prefix 
 ```
 
