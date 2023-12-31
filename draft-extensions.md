@@ -4,7 +4,7 @@ author: "by Darius J Chuck"
 date: "First Draft: January 2024."
 ---
 
-These extensions complement the [specification](https://jevko.org/specification.html).
+These extensions complement the [specification](spec-standard-grammar.md).
 
 # FencedText
 
