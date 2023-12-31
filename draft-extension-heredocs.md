@@ -4,6 +4,10 @@ author: "by Darius J Chuck"
 date: "Draft: December 2022."
 ---
 
+This draft is superseded by [The Jevko Syntax: Extensions Specification](draft-extensions.md).
+
+<del>
+
 ## Illustration
 
 ![heredoc screenshot](heredoc.png)
@@ -102,3 +106,5 @@ another prefix
 ```
 
 rather than `another prefix `.
+
+</del>
